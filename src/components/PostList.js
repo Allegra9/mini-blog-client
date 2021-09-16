@@ -3,14 +3,14 @@ import CommentCreate from './CommentCreate'
 import CommentList from './CommentList'
 import styled from 'styled-components'
 
-const PostList = ({ posts }) => {
+const PostList = ({ posts, fetchPosts }) => {
   const renderedPosts = posts.map(post => {
     return (
       <PostCard className="card" key={post.id}>
         <div className="card-body">
           <h3>{post.title}</h3>
-          <CommentList postId={post.id} />
-          <CommentCreate postId={post.id} />
+          <CommentList comments={post.comments} />
+          <CommentCreate postId={post.id} fetchPosts={fetchPosts} />
         </div>
       </PostCard>
     )
